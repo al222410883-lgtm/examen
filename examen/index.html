@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen practico  Unidad I y II</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">ejercicios,edad,Temperatura,tareas</div>
+            <ul class="nav-links">
+                <li><button onclick="switchTab('p1')" id="btn-p1" class="active">Edad</button></li>
+                <li><button onclick="switchTab('p2')" id="btn-p2">Convertidor</button></li>
+                <li><button onclick="switchTab('p3')" id="btn-p3">Tareas</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="p1" class="section-view active">
+            <h2>calcular edad</h2>
+            <p class="subtitle">POn tu fecha de nacimiento</p>
+            <form id="ageForm" onsubmit="calculateAge(event)">
+                <div class="form-group">
+                    <div class="date-select-group">
+                        <select id="birthDay" required>
+                            <option value="">Día</option>
+                            
+                        </select>
+                        <select id="birthMonth" required>
+                            <option value="">Mes</option>
+                            <option value="0">Enero</option>
+                            <option value="1">Febrero</option>
+                            <option value="2">Marzo</option>
+                            <option value="3">Abril</option>
+                            <option value="4">Mayo</option>
+                            <option value="5">Junio</option>
+                            <option value="6">Julio</option>
+                            <option value="7">Agosto</option>
+                            <option value="8">Septiembre</option>
+                            <option value="9">Octubre</option>
+                            <option value="10">Noviembre</option>
+                            <option value="11">Diciembre</option>
+                        </select>
+                        <select id="birthYear" required>
+                            <option value="">Año</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="action-btn">Calcular</button>
+                </div>
+            </form>
+            <div id="ageResult" class="result-msg"></div>
+        </section>
+
+        <section id="p2" class="section-view">
+            <h2>convertir Temperatura</h2>
+            <p class="subtitle">temperatura</p>
+            <div class="form-group">
+                <input type="number" id="tempValue" placeholder="0.00" step="any" oninput="validateTempForm()">
+                <select id="fromUnit" onchange="validateTempForm()">
+                    <option value="">para la unidad</option>
+                    <option value="Celsius">Celsius</option>
+                    <option value="Fahrenheit">Fahrenheit</option>
+                    <option value="Kelvin">Kelvin</option>
+                </select>
+                <select id="toUnit" onchange="validateTempForm()">
+                    <option value="">a la unidad</option>
+                    <option value="Celsius">Celsius</option>
+                    <option value="Fahrenheit">Fahrenheit</option>
+                    <option value="Kelvin">Kelvin</option>
+                </select>
+                <button type="button" id="convertBtn" class="action-btn" disabled onclick="convertTemperature()">Convert</button>
+            </div>
+            <div id="tempResult" class="result-msg"></div>
+        </section>
+
+        <section id="p3" class="section-view">
+            <h2>tareas</h2>
+            <p class="subtitle">tareas</p>
+            <div class="task-input-container">
+                <input type="text" id="taskInput" placeholder="Start writing and press enter to create task..." onkeypress="handleTaskKey(event)">
+                <button type="button" onclick="addTask()">↵</button>
+            </div>
+            <ul id="taskList" class="task-list"></ul>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
